@@ -120,7 +120,7 @@
          alt="Marco Polo's Journey" 
          class="header-image">
     
-    <h1><em>Marco Polo's Divisament dou Monde</em></h1>
+    <h1><em>Mapping Marco Polo's Divisament dou Monde</em></h1>
     <h2 class="subtitle">A GitHub repository for the <a href="https://www.mappingpolo.com" target="_blank" style="color: #3366cc; text-decoration: none;">Mapping Polo project</a></h2>
     <h2 class="developer">Developer and PI: Tommaso Pepe, <a href="https://uibe.academia.edu/TommasoPepe" target="_blank" style="color: #3366cc; text-decoration: none;">https://uibe.academia.edu/TommasoPepe</a></h2>
     
