@@ -61,17 +61,26 @@
         h1 {
             font-family: 'Palatino Linotype', 'Book Antiqua', serif;
             text-align: center;
-            margin: 20px 0 10px 0;
+            margin: 20px 0 5px 0;
             color: #444;
             font-style: normal;
         }
         h2.subtitle {
             font-family: 'Palatino Linotype', 'Book Antiqua', serif;
             text-align: center;
-            margin: 0 0 20px 0;
+            margin: 0;
             color: #666;
             font-size: 1.2em;
             font-weight: normal;
+        }
+        h2.developer {
+            font-family: 'Palatino Linotype', 'Book Antiqua', serif;
+            text-align: center;
+            margin: 0 0 20px 0;
+            color: #666;
+            font-size: 1em;
+            font-weight: normal;
+            font-style: italic;
         }
         h1 em {
             font-style: italic;
@@ -113,6 +122,7 @@
     
     <h1><em>Marco Polo's Divisament dou Monde</em></h1>
     <h2 class="subtitle">A GitHub repository for the <a href="https://www.mappingpolo.com" target="_blank" style="color: #3366cc; text-decoration: none;">Mapping Polo project</a></h2>
+    <h2 class="developer">Developer and PI: Tommaso Pepe, <a href="https://uibe.academia.edu/TommasoPepe" target="_blank" style="color: #3366cc; text-decoration: none;">https://uibe.academia.edu/TommasoPepe</a></h2>
     
     <div class="container">
         <div class="column">
