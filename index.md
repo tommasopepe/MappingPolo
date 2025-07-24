@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marco Polo's Divisament dou Monde</title>
+    <title>Mapping Marco Polo's <i>Divisament dou Monde</i>i</title>
     <style>
         /* Hide GitHub Pages header and repo link */
         .header {
