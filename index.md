@@ -1,10 +1,25 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapping Marco Polo's Divisament dou Monde</title>
+    <title>Mapping Marco Polo's <i>Divisament dou Monde</i></title>
     <style>
+        /* COMPLETE GITHUB HEADER SUPPRESSION */
+        .Header, 
+        .header, 
+        .gh-header, 
+        .repohead, 
+        .repository-content > h1,
+        .pagehead,
+        .js-repo-nav {
+            display: none !important;
+            visibility: hidden !important;
+            height: 0 !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            border: 0 !important;
+        }
+        
         /* GitHub Pages container override */
         .Layout-main {
             margin-top: 0 !important;
@@ -75,42 +90,19 @@
             margin: 0 0 10px 0;
         }
         
-        /* Map Container Styles */
+        /* New Map Container Styles */
         .map-container {
             width: 100%;
-            height: 700px;
+            height: 600px;
             margin: 40px 0;
             border-radius: 4px;
             box-shadow: 0 2px 15px rgba(0,0,0,0.1);
             overflow: hidden;
-            position: relative;
         }
-        #marco-polo-map {
+        iframe {
+            border: none;
             width: 100%;
             height: 100%;
-            background: #f8f4e8;
-        }
-        
-        /* QGIS2Web styles */
-        .leaflet-container {
-            font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
-        }
-        .leaflet-popup-content {
-            width: auto !important;
-            margin: 13px 19px;
-        }
-        .leaflet-popup-content-wrapper {
-            border-radius: 2px;
-        }
-        .css_MarcoPoloLocalitiesCSVFoglio1_1 {
-            color: #323232;
-            font-size: 10pt;
-            font-weight: bold;
-            font-family: 'Open Sans', sans-serif;
-            background: transparent;
-            border: none;
-            box-shadow: none;
-            text-shadow: 1px 1px 0px rgba(255,255,255,0.7);
         }
         
         @media (max-width: 768px) {
@@ -118,16 +110,20 @@
                 flex-direction: column;
             }
             .map-container {
-                height: 500px;
+                height: 400px;
             }
         }
     </style>
 </head>
 <body>
+    <img src="https://static.wixstatic.com/media/75d65a_4c4d7e4243a44932ba2fc1f90d4aac29~mv2.jpg/v1/fill/w_2560,h_1272,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/75d65a_4c4d7e4243a44932ba2fc1f90d4aac29~mv2.jpg" 
+         alt="Marco Polo's Journey" 
+         class="header-image">
+    
     <h1><em>Mapping Marco Polo's Divisament dou Monde</em></h1>
     <h2 class="subtitle">A GitHub repository for the <a href="https://www.mappingpolo.com" target="_blank" style="color: #3366cc; text-decoration: none;">Mapping Polo project</a></h2>
     <h2 class="developer">Developer and PI: Tommaso Pepe, <a href="https://uibe.academia.edu/TommasoPepe" target="_blank" style="color: #3366cc; text-decoration: none;">https://uibe.academia.edu/TommasoPepe</a></h2>
-
+    
     <div class="container">
         <div class="column">
             <div class="paragraph-pair">
@@ -149,12 +145,16 @@
             </div>
         </div>
     </div>
-
-    <!-- Marco Polo Map Container -->
+    
+    <!-- New Map Section -->
     <div class="map-container">
-        <div id="marco-polo-map"></div>
+        <iframe src="https://tommasopeojcts.maps.arcgis.com/apps/mapviewer/index.html?webmap=0f8e01072cb04c308971aebf99646cc7" 
+                title="Marco Polo's Journey Map"
+                allow="geolocation"
+                allowfullscreen>
+        </iframe>
     </div>
-
+    
     <div class="container">
         <div class="column">
             <div class="paragraph-pair">
@@ -176,111 +176,5 @@
             </div>
         </div>
     </div>
-
-    <!-- Map Scripts -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/autolinker@3.14.2/dist/Autolinker.min.js"></script>
-    
-    <!-- Your QGIS2Web data and scripts -->
-    <script>
-    // Marco Polo Localities Data
-    var json_MarcoPoloLocalitiesCSVFoglio1_1 = {
-        "type": "FeatureCollection",
-        "features": [
-            // Your complete feature data goes here
-            // Example feature:
-            {
-                "type": "Feature",
-                "properties": {
-                    "Name": "Beijing (Canbaluc)",
-                    "Latitude (Y)": 39.9042,
-                    "Longitude (X)": 116.4074
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [116.4074, 39.9042]
-                }
-            },
-            // Add all your features from MarcoPoloLocalitiesCSVFoglio1_1.js
-        ]
-    };
-    </script>
-    
-    <script>
-    // Initialize the map with your original QGIS settings
-    var map = L.map('marco-polo-map', {
-        zoomControl: false,
-        maxZoom: 28,
-        minZoom: 1
-    }).fitBounds([[-21.01662037982929, -10.272148768597788], [34.887839911223146, 80.47482199547952]]);
-    
-    // Add base layer
-    var layer_OpenStreetMap_0 = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        opacity: 1.0,
-        attribution: '',
-        minZoom: 1,
-        maxZoom: 28,
-        minNativeZoom: 0,
-        maxNativeZoom: 19
-    }).addTo(map);
-    
-    // Add zoom control
-    L.control.zoom({ position: 'topleft' }).addTo(map);
-    
-    // Function to handle popups (from your original QGIS export)
-    function pop_MarcoPoloLocalitiesCSVFoglio1_1(feature, layer) {
-        var popupContent = '<table>\
-                <tr>\
-                    <th scope="row">Name</th>\
-                    <td>' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name']).replace(/'/g, '\'').toLocaleString() : '') + '</td>\
-                </tr>\
-                <tr>\
-                    <td colspan="2">Latitude: ' + (feature.properties['Latitude (Y)'] !== null ? Autolinker.link(String(feature.properties['Latitude (Y)']).replace(/'/g, '\'').toLocaleString() : '') + '</td>\
-                </tr>\
-                <tr>\
-                    <td colspan="2">Longitude: ' + (feature.properties['Longitude (X)'] !== null ? Autolinker.link(String(feature.properties['Longitude (X)']).replace(/'/g, '\'').toLocaleString() : '') + '</td>\
-                </tr>\
-            </table>';
-        
-        layer.bindPopup(popupContent, { maxHeight: 400 });
-    }
-    
-    // Style for Marco Polo locations
-    function style_MarcoPoloLocalitiesCSVFoglio1_1_0() {
-        return {
-            radius: 4.0,
-            opacity: 1,
-            color: 'rgba(35,35,35,1.0)',
-            dashArray: '',
-            lineCap: 'butt',
-            lineJoin: 'miter',
-            weight: 1,
-            fill: true,
-            fillOpacity: 1,
-            fillColor: 'rgba(183,72,75,1.0)',
-            interactive: true,
-        }
-    }
-    
-    // Add Marco Polo locations layer
-    var layer_MarcoPoloLocalitiesCSVFoglio1_1 = L.geoJson(json_MarcoPoloLocalitiesCSVFoglio1_1, {
-        onEachFeature: pop_MarcoPoloLocalitiesCSVFoglio1_1,
-        pointToLayer: function (feature, latlng) {
-            return L.circleMarker(latlng, style_MarcoPoloLocalitiesCSVFoglio1_1_0());
-        }
-    }).addTo(map);
-    
-    // Add labels if needed (simplified from your original)
-    layer_MarcoPoloLocalitiesCSVFoglio1_1.eachLayer(function(layer) {
-        if (layer.feature.properties['Name']) {
-            layer.bindTooltip(layer.feature.properties['Name'], {
-                permanent: true,
-                direction: 'top',
-                className: 'css_MarcoPoloLocalitiesCSVFoglio1_1'
-            });
-        }
-    });
-    </script>
 </body>
 </html>
